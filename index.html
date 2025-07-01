@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hotel Digital Marketing Proposal</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+                background: #000000;
+                color: #ffffff;
+                overflow: scroll;
+            }
+
+            .slide {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 60px 40px;
+                text-align: center;
+                overflow-y: auto;
+            }
+
+            .slide-content {
+                max-width: 800px;
+                width: 100%;
+                margin: auto;
+            }
+
+            h1 {
+                font-size: 4em;
+                font-weight: 300;
+                line-height: 1.2;
+                margin-bottom: 40px;
+                letter-spacing: -2px;
+            }
+
+            h2 {
+                font-size: 3em;
+                font-weight: 300;
+                line-height: 1.3;
+                margin-bottom: 30px;
+                letter-spacing: -1px;
+            }
+
+            .highlight {
+                color: #ff6b6b;
+            }
+
+            .subtitle {
+                font-size: 1.4em;
+                font-weight: 300;
+                opacity: 0.7;
+                margin-bottom: 60px;
+                line-height: 1.5;
+            }
+
+            .price {
+                font-size: 6em;
+                font-weight: 200;
+                color: #ff6b6b;
+                margin: 40px 0;
+                letter-spacing: -3px;
+            }
+
+            .price-small {
+                font-size: 0.3em;
+                opacity: 0.6;
+                color: #ffffff;
+            }
+
+            .simple-list {
+                list-style: none;
+                font-size: 1.3em;
+                line-height: 2;
+                margin: 40px 0;
+                font-weight: 300;
+                max-height: none;
+                overflow: visible;
+                text-align: left;
+            }
+
+            .simple-list li {
+                margin: 15px 0;
+                opacity: 0.8;
+            }
+
+            .simple-list li::before {
+                content: "✓";
+                color: #ff6b6b;
+                margin-right: 15px;
+                font-weight: bold;
+            }
+
+            .cta-button {
+                display: inline-block;
+                background: #ff6b6b;
+                color: #000000;
+                padding: 20px 50px;
+                border-radius: 60px;
+                text-decoration: none;
+                font-size: 1.2em;
+                font-weight: 500;
+                margin: 40px 20px;
+                transition: all 0.3s ease;
+                border: 2px solid #ff6b6b;
+            }
+
+            .cta-button:hover {
+                background: transparent;
+                color: #ff6b6b;
+            }
+
+            .navigation {
+                position: fixed;
+                bottom: 40px;
+                right: 40px;
+                display: flex;
+                gap: 15px;
+                z-index: 1000;
+            }
+
+            .nav-arrows {
+                position: fixed;
+                bottom: 40px;
+                left: 40px;
+                display: flex;
+                gap: 15px;
+                z-index: 1000;
+            }
+
+            .arrow-button {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: rgba(255, 107, 107, 0.1);
+                border: 2px solid rgba(255, 107, 107, 0.3);
+                color: #ff6b6b;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+
+            .arrow-button:hover {
+                background: #ff6b6b;
+                color: #000000;
+                border-color: #ff6b6b;
+                transform: scale(1.1);
+            }
+
+            .nav-dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: rgba(255, 107, 107, 0.3);
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .nav-dot.active {
+                background: #ff6b6b;
+                transform: scale(1.2);
+            }
+
+            .slide-number {
+                position: absolute;
+                top: 40px;
+                right: 40px;
+                font-size: 1em;
+                opacity: 0.4;
+                font-weight: 300;
+            }
+
+            .divider {
+                width: 60px;
+                height: 1px;
+                background: #ff6b6b;
+                margin: 40px auto;
+            }
+
+            .stats {
+                display: flex;
+                justify-content: center;
+                gap: 80px;
+                margin: 60px 0;
+            }
+
+            .stat {
+                text-align: center;
+            }
+
+            .stat-number {
+                font-size: 3em;
+                font-weight: 200;
+                color: #ff6b6b;
+                display: block;
+            }
+
+            .stat-label {
+                font-size: 1.1em;
+                opacity: 0.6;
+                font-weight: 300;
+                margin-top: 10px;
+            }
+
+            .minimal-box {
+                border: 1px solid rgba(255, 107, 107, 0.3);
+                border-radius: 8px;
+                padding: 40px;
+                margin: 40px 0;
+                background: rgba(255, 107, 107, 0.03);
+            }
+
+            .fade-in {
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeIn 0.8s ease forwards;
+            }
+
+            @keyframes fadeIn {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .service-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+                margin: 40px 0;
+            }
+
+            .service-card {
+                border: 1px solid rgba(255, 107, 107, 0.2);
+                border-radius: 12px;
+                padding: 30px;
+                background: rgba(255, 107, 107, 0.02);
+                text-align: left;
+            }
+
+            .service-title {
+                color: #ff6b6b;
+                font-size: 1.4em;
+                font-weight: 500;
+                margin-bottom: 15px;
+            }
+
+            .service-price {
+                font-size: 2em;
+                color: #ff6b6b;
+                font-weight: 300;
+                margin: 15px 0;
+            }
+
+            .contact-info {
+                font-size: 1.2em;
+                line-height: 1.8;
+                opacity: 0.8;
+            }
+
+            .contact-info .highlight {
+                opacity: 1;
+            }
+
+            .slide-content__logos {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+                column-gap: 40px;
+            }
+
+            @media (max-width: 768px) {
+                .slide {
+                    padding: 40px 20px;
+                    min-height: 100vh;
+                    align-items: flex-start;
+                    padding-top: 60px;
+                }
+                
+                .slide-content {
+                    max-width: 100%;
+                    padding: 0 10px;
+                }
+                
+                h1 { 
+                    font-size: 2.5em; 
+                    margin-bottom: 30px;
+                    line-height: 1.1;
+                }
+                
+                h2 { 
+                    font-size: 2.2em; 
+                    margin-bottom: 25px;
+                    line-height: 1.2;
+                }
+                
+                .price { 
+                    font-size: 3.5em; 
+                    margin: 30px 0;
+                }
+                
+                .subtitle {
+                    font-size: 1.2em;
+                    margin-bottom: 40px;
+                    line-height: 1.4;
+                }
+                
+                .simple-list {
+                    font-size: 1.1em;
+                    line-height: 1.8;
+                    margin: 30px 0;
+                    padding: 0 20px;
+                }
+                
+                .service-grid {
+                    grid-template-columns: 1fr;
+                    gap: 25px;
+                }
+                
+                .stats { 
+                    flex-direction: column; 
+                    gap: 30px;
+                    margin: 40px 0;
+                }
+                
+                .stat-number {
+                    font-size: 2.5em;
+                }
+                
+                .cta-button {
+                    display: block;
+                    margin: 15px auto;
+                    padding: 18px 40px;
+                    font-size: 1.1em;
+                    width: fit-content;
+                    min-width: 200px;
+                }
+                
+                .minimal-box {
+                    padding: 25px 20px;
+                    margin: 30px 0;
+                    font-size: 0.95em;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Slide 1: Title -->
+        <div class="slide" id="slide-1">
+            <div class="slide-number">01</div>
+            <div class="slide-content fade-in">
+                <div class="slide-content__logos">
+                    <img style="width: 20%;" src="img/claritas-logo.png" alt="">
+                    <h2>+</h2>
+                    <img style="width: 20%;" src="img/kenlabs-logo-004.png" alt="">
+                </div>
+                <h1>Digital Marketing<br><span class="highlight">for Hotels</span></h1>
+                <div class="divider"></div>
+                <p class="subtitle">Complete solution for Clarita's Beach Bar & Hotel</p>
+                <div class="minimal-box">
+                    <p style="font-size: 1.4em; font-weight: 300; line-height: 1.6;">
+                        <span class="highlight">All Inclusive</span> • <span class="highlight">Guaranteed Results</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Branding & Design -->
+        <div class="slide" id="slide-2" style="display: none;">
+            <div class="slide-number">02</div>
+            <div class="slide-content fade-in">
+                <h2>Branding & <span class="highlight">Graphic Design</span></h2>
+                <div class="divider"></div>
+                
+                <ul class="simple-list">
+                    <li>Complete visual identity development and evolution</li>
+                    <li>Brand manual and application guidelines</li>
+                    <li>Social media designs</li>
+                    <li>Promotional material (flyers, banners, digital menus)</li>
+                    <li>Corporate presentations and proposals</li>
+                    <li>Seasonal brand adaptations</li>
+                </ul>
+
+                <div class="minimal-box">
+                    <p style="font-size: 1.2em; font-weight: 300; line-height: 1.6;">
+                        <span class="highlight">Deliverables:</span> Consistent visual portfolio<br>
+                        <span class="highlight">Software:</span> Adobe Creative Suite + Canva Pro<br>
+                        <span class="highlight">Revisions:</span> Unlimited until approval
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Digital Marketing -->
+        <div class="slide" id="slide-3" style="display: none;">
+            <div class="slide-number">03</div>
+            <div class="slide-content fade-in">
+                <h2>Complete <span class="highlight">Digital Marketing</span></h2>
+                <div class="divider"></div>
+                
+                <div class="service-grid" style="grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div class="service-card">
+                        <div class="service-title">📱 Community Management</div>
+                        <ul class="simple-list" style="font-size: 0.9em;">
+                            <li>Instagram, Facebook, TikTok</li>
+                            <li>Monthly posts per platform</li>
+                            <li>Stories + engagement</li>
+                            <li>Message responses</li>
+                            <li>Moderation and crisis management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-title">🎯 Digital Advertising</div>
+                        <ul class="simple-list" style="font-size: 0.9em;">
+                            <li>Optimized Google Ads</li>
+                            <li>Facebook/Instagram Ads</li>
+                            <li>Advanced tourism targeting</li>
+                            <li>Remarketing</li>
+                            <li>Continuous A/B testing</li>
+                            <li>OpenTable configuration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <ul class="simple-list" style="margin-top: 30px;">
+                    <li>Local and international SEO (Spanish/English)</li>
+                    <li>Email marketing</li>
+                    <li>SEO-optimized blog posts</li>
+                    <li>Bilingual creative copywriting</li>
+                    <li>Analytics and detailed reports</li>
+                    <li>WhatsApp Business configuration</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: Door-to-Door Marketing -->
+        <div class="slide" id="slide-4" style="display: none;">
+            <div class="slide-number">04</div>
+            <div class="slide-content fade-in">
+                <h2>Door-to-Door <span class="highlight">Marketing</span></h2>
+                <div class="divider"></div>
+                
+                <div class="">
+                    <div class="minimal-box">
+                        <div class="service-title" style="text-align: left;">🎯 Targeted Strategy</div>
+                        <ul class="simple-list" style="font-size: 0.95em;">
+                            <li>Local tour operators</li>
+                            <li>Travel agencies</li>
+                            <li>Shopping centers</li>
+                            <li>Target audience</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <ul class="simple-list" style="margin-top: 30px;">
+                    <li>Updated contact database</li>
+                    <li>Physical and digital promotional material design</li>
+                    <li>CRM tracking for each contact</li>
+                    <li>Integration with digital strategy</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Web & Technology -->
+        <div class="slide" id="slide-5" style="display: none;">
+            <div class="slide-number">05</div>
+            <div class="slide-content fade-in">
+                <h2>Web Development & <span class="highlight">Hotel Technology</span></h2>
+                <div class="divider"></div>
+                
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="service-title">💻 Premium Website</div>
+                        <ul class="simple-list" style="font-size: 0.95em;">
+                            <li>Modern responsive design</li>
+                            <li>Integrated booking engine</li>
+                            <li>Optimized technical SEO</li>
+                            <li>Smart forms</li>
+                            <li>Advanced analytics + tracking</li>
+                            <li>Website payment configuration</li>
+                            <li>Multi-language website</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-title">🏨 Hotel System (PMS) Support</div>
+                        <ul class="simple-list" style="font-size: 0.95em;">
+                            <li>Cloudbeds configuration</li>
+                            <li>Room + rate setup</li>
+                            <li>Complete staff training</li>
+                            <li>OTA channel integration</li>
+                            <li>Housekeeping + maintenance</li>
+                            <li>Internal communication</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="minimal-box">
+                    <p style="font-size: 1.2em; font-weight: 300; line-height: 1.6;">
+                        <span class="highlight">Premium hosting setup:</span> Global CDN + SSL + backups<br>
+                        <span class="highlight">Maintenance:</span> Updates + security<br>
+                        <span class="highlight">Recommended PMS:</span> Cloudbeds (price per room quantity)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Photography -->
+        <div class="slide" id="slide-6" style="display: none;">
+            <div class="slide-number">06</div>
+            <div class="slide-content fade-in">
+                <h2>Professional <span class="highlight">Photography</span></h2>
+                <div class="divider"></div>
+                
+                <ul class="simple-list">
+                    <li>Room and common area photography</li>
+                    <li>Lifestyle photos and guest experiences</li>
+                    <li>Hotel food and beverages</li>
+                    <li>Aerial drone photography</li>
+                    <li>Professional editing of all images</li>
+                    <li>Constantly updated image bank</li>
+                    <li>Optimized formats for each platform</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: Results -->
+        <div class="slide" id="slide-7" style="display: none;">
+            <div class="slide-number">07</div>
+            <div class="slide-content fade-in">
+                <h2>Results</h2>
+                <div class="divider"></div>
+
+                <div class="service-grid" style="margin-top: 40px;">
+                    <div class="service-card">
+                        <div class="service-title">📈 Sustainable Growth</div>
+                        <ul class="simple-list" style="font-size: 0.95em;">
+                            <li>30-40% reduction in OTA dependency</li>
+                            <li>Monthly RevPAR increase</li>
+                            <li>Better Google positioning</li>
+                            <li>Own guest database</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-title">🎯 Operational Efficiency</div>
+                        <ul class="simple-list" style="font-size: 0.95em;">
+                            <li>Check-in/out automation</li>
+                            <li>Optimized housekeeping management</li>
+                            <li>Improved staff communication</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="minimal-box">
+                    <p style="font-size: 1.3em; font-weight: 300; line-height: 1.6;">
+                        <span class="highlight">Timeline:</span> Visible results in 90 days<br>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Investment -->
+        <div class="slide" id="slide-8" style="display: none;">
+            <div class="slide-number">08</div>
+            <div class="slide-content fade-in">
+                <h2>Detailed <span class="highlight">Investment</span></h2>
+                <div class="divider"></div>
+                <p class="subtitle">Complete transparency in costs and benefits</p>
+
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number" style="font-size: 2.2em;">$4,750</span>
+                        <div class="stat-label">Total price</div>
+                    </div>
+                </div>
+
+                <div class="minimal-box">
+                    <p style="font-size: 1.2em; font-weight: 300; line-height: 1.8;">
+                        <span class="highlight">Initial payment:</span> 50% contract signing, 50% end of month<br>
+                        <span class="highlight">Monthly:</span> Bi-weekly payments<br>
+                        <span class="highlight">Billing:</span> Advanced billing<br>
+                        <span class="highlight">Contract:</span> 12 months<br>
+                        <span class="highlight">Included:</span> Priority support + reports + meetings
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Guarantees -->
+        <div class="slide" id="slide-9" style="display: none;">
+            <div class="slide-number">09</div>
+            <div class="slide-content fade-in">
+                <h2>Our <span class="highlight">Guarantees</span></h2>
+                <div class="divider"></div>
+                
+                <ul class="simple-list">
+                    <li>Monthly reports</li>
+                    <li>Follow-up meetings</li>
+                    <li>Priority technical support</li>
+                    <li>Strategy adjustments at no additional cost</li>
+                    <li>Support and advice for improvements</li>
+                </ul>
+
+                <div class="minimal-box">
+                    <p style="font-size: 1.3em; font-weight: 300; line-height: 1.6;">
+                        <span class="highlight">Total commitment</span> to your hotel's success<br>
+                        Your growth is our success
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Call to Action -->
+        <div class="slide" id="slide-10" style="display: none;">
+            <div class="slide-number">10</div>
+            <div class="slide-content fade-in">
+                <h2>Ready to <span class="highlight">Grow?</span></h2>
+                <div class="divider"></div>
+                
+                <p class="subtitle">A decision that will transform your hotel</p>
+                
+                <div class="minimal-box">
+                    <div class="contact-info">
+                        <p><span class="highlight">📅 Start:</span> Immediate</p>
+                        <p><span class="highlight">⏰ Validity:</span> 30 days</p>
+                        <p><span class="highlight">📍 Location:</span> Jacó, Costa Rica</p>
+                        <p><span class="highlight">📧 Email:</span> kendollcastro@gmail.com</p>
+                        <p><span class="highlight">📱 WhatsApp:</span> +506-6017-1996</p>
+                    </div>
+                </div>
+                
+                <p style="font-size: 1.1em; opacity: 0.6; margin-top: 30px; font-style: italic;">
+                    *Proposal valid for 30 days • Prices in USD • Taxes not included
+                </p>
+            </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <div class="nav-arrows">
+            <button class="arrow-button" onclick="previousSlide()">‹</button>
+            <button class="arrow-button" onclick="nextSlide()">›</button>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <div class="nav-dot active" onclick="showSlide(1)"></div>
+            <div class="nav-dot" onclick="showSlide(2)"></div>
+            <div class="nav-dot" onclick="showSlide(3)"></div>
+            <div class="nav-dot" onclick="showSlide(4)"></div>
+            <div class="nav-dot" onclick="showSlide(5)"></div>
+            <div class="nav-dot" onclick="showSlide(6)"></div>
+            <div class="nav-dot" onclick="showSlide(7)"></div>
+            <div class="nav-dot" onclick="showSlide(8)"></div>
+            <div class="nav-dot" onclick="showSlide(9)"></div>
+            <div class="nav-dot" onclick="showSlide(10)"></div>
+        </div>
+
+        <script>
+            let currentSlide = 1;
+            const totalSlides = 10;
+
+            function showSlide(n) {
+                // Hide all slides
+                for (let i = 1; i <= totalSlides; i++) {
+                    document.getElementById(`slide-${i}`).style.display = 'none';
+                }
+                
+                // Update navigation dots
+                document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index + 1 === n);
+                });
+                
+                // Show current slide
+                document.getElementById(`slide-${n}`).style.display = 'flex';
+                currentSlide = n;
+                
+                // Re-trigger animation
+                const content = document.querySelector(`#slide-${n} .fade-in`);
+                content.style.animation = 'none';
+                content.offsetHeight; // Trigger reflow
+                content.style.animation = 'fadeIn 0.8s ease forwards';
+            }
+
+            function nextSlide() {
+                currentSlide = currentSlide < totalSlides ? currentSlide + 1 : 1;
+                showSlide(currentSlide);
+            }
+
+            function previousSlide() {
+                currentSlide = currentSlide > 1 ? currentSlide - 1 : totalSlides;
+                showSlide(currentSlide);
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    previousSlide();
+                }
+            });
+
+            // Initialize
+            showSlide(1);
+        </script>
+    </body>
+</html>
